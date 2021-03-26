@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../templates/head') %>
+
+    <body>
+        <h1>Welcome to Benedict</h1>
+        <p>A simple webapp for express + node + mongodb</p>
+        <small>go to <em>(/api/products)</em> to get list of all products</small>
+        <a href="<%=url('products_page')%>">
+            <h1>Products</h1>
+        </a>
+        <hr>
+        <h1>Create New Product</h1>
+        <%- include('../templates/create-product') %>
+    </body>
+
+</html>

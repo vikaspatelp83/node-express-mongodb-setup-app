@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { ObjectId } = require("mongodb").ObjectID;
+
 // connect to database
 mongoose
   .connect("mongodb://localhost/benedict", {
@@ -37,12 +37,28 @@ async function get_products() {
   return products;
 }
 
-// function get_product(productId) {
-//   // let id = ObjectId(productId);
-//   const product = Product.find({ _id: productId });
-//   return product;
-// }
+async function search_products(text) {
+  const search_term = text;
+  const products = await Product.find({
+    $or: [
+      {
+        category: {
+          $regex: search_term,
+          $options: "i",
+        },
+      },
+      {
+        name: {
+          $regex: search_term,
+          $options: "i",
+        },
+      },
+    ],
+  });
+  console.log(products);
+  return products;
+}
 
 module.exports.get_products = get_products;
-// module.exports.get_product = get_product;
 module.exports.create_product = create_product;
+module.exports.search_products = search_products;
