@@ -1,0 +1,39 @@
+<a href="<%=url('home_page')%>">
+  <h1>Home</h1>
+</a>
+<hr>
+<form method="get" action="<%= url('search') %>">
+  <label for="search_query">Enter text to search</label>
+  <input type="text" name="q" id="search_query">
+  <input type="submit" value="search">
+</form>
+<hr>
+
+<% if (locals.q) { %>
+ Displaying products with category: <% q %> 
+<% } %>
+<% if(locals.products) { %>
+<table border="1">
+  <thead>
+    <th>Name</th>
+    <th>Catetgory</th>
+    <th>Price</th>
+  </thead>
+  <tbody>
+    <% products.forEach((product)=> { %> 
+    <tr>
+      <td>
+        <%= product.name %> 
+      </td>
+      <td>
+        <%= product.category %> 
+      </td>
+      <td>
+        <%= product.price %> 
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<% } %> 

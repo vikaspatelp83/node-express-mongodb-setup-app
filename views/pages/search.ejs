@@ -1,0 +1,21 @@
+<% if (locals.q) { %>
+  Displaying products with text: <%= q %> 
+<% } %> 
+<% if(locals.products) { %>
+<table border="1">
+  <thead>
+    <th>Name</th>
+    <th>Catetgory</th>
+    <th>Price</th>
+  </thead>
+  <tbody>
+    <% products.forEach((product)=> { %>
+    <tr>
+      <td><%= product.name %></td>
+      <td><%= product.category %></td>
+      <td><%= product.price %></td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<% } %>
